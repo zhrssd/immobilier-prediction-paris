@@ -83,10 +83,9 @@ st.markdown("""
         background-color: #34495E; /* Modifie la couleur d'arrière-plan de l'input */
     }
 
-    /* Ajustement de la case Bienvenue */
     .stAlert {
-        background-color: #34495E !important; /* Fond gris foncé pour la case */
-        color: white !important;  /* Texte blanc pour contraster */
+        background-color: #34495E 
+        color: black 
     }
     </style>
 """, unsafe_allow_html=True)
