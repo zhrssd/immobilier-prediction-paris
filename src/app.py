@@ -7,7 +7,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
 
-# Configuration de la page
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
     page_icon="🏠",
@@ -20,10 +19,12 @@ st.markdown("""
     <style>
     .main {
         padding: 2rem;
+        background-color: #2E4053;  /* Arrière-plan gris foncé pour un meilleur contraste */
+        color: white;
     }
     .stButton>button {
         width: 100%;
-        background-color: #2C3E50;
+        background-color: #1ABC9C; /* Vert plus clair pour les boutons */
         color: white;
         font-weight: bold;
         padding: 0.75rem;
@@ -33,14 +34,14 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #1A252F;
+        background-color: #16A085; /* Couleur plus foncée au survol */
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(44, 62, 80, 0.4);
     }
     .prediction-box {
         padding: 2.5rem;
         border-radius: 1.5rem;
-        background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+        background: linear-gradient(135deg, #2980B9 0%, #1ABC9C 100%); /* Dégradé bleu et vert */
         color: white;
         text-align: center;
         margin: 2rem 0;
@@ -52,26 +53,26 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     .metric-card {
-        background: white;
+        background: #ECF0F1; /* Fond clair pour les cartes de métriques */
         padding: 1.5rem;
         border-radius: 1rem;
         margin: 0.5rem 0;
-        border: 2px solid #E8E8E8;
+        border: 2px solid #BDC3C7;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         transition: all 0.3s;
     }
     .metric-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        border-color: #2C3E50;
+        border-color: #2980B9; /* Couleur au survol */
     }
     .metric-card h3 {
-        color: #2C3E50;
+        color: #34495E;
         font-size: 1rem;
         margin-bottom: 0.5rem;
     }
     .metric-card h1 {
-        color: #2C3E50;
+        color: #2980B9;
         font-size: 2rem;
         margin: 0.5rem 0;
     }
@@ -100,6 +101,8 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     </style>
+""", unsafe_allow_html=True)
+
 """, unsafe_allow_html=True)
 
 
