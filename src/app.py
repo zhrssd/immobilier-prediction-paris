@@ -97,11 +97,6 @@ st.markdown("""
     padding: 1rem;  /* Un peu d'espace autour du texte */
     border-radius: 0.5rem;  /* Coins arrondis pour un effet plus doux */
 }
-
-    .stAlert {
-        background-color: #34495E 
-        color: white 
-    }
     </style>
 """, unsafe_allow_html=True)
 
