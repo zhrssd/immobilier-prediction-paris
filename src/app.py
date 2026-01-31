@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from pathlib import Path
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
-    page_icon="🏠",
+    page_icon="FS",
     layout="wide",
     initial_sidebar_state="expanded"
 )
