@@ -9,8 +9,6 @@ import joblib
 import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
-
-# Configuration de la page
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
     page_icon="🏠",
@@ -23,11 +21,13 @@ st.markdown("""
     <style>
     .main {
         padding: 2rem;
+        background-color: #2C3E50;  /* Arrière-plan gris foncé pour une meilleure lisibilité */
+        color: white;  /* Texte en blanc pour contraster avec le fond sombre */
     }
     .stButton>button {
         width: 100%;
-        background-color: #FF4B4B;
-        color: #FF4B4B;
+        background-color: #3498DB;  /* Bleu clair pour les boutons */
+        color: white;
         font-weight: bold;
         padding: 0.75rem;
         border-radius: 0.5rem;
@@ -36,18 +36,18 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #FF3333;
+        background-color: #2980B9;  /* Bleu plus foncé au survol */
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(255, 75, 75, 0.4);
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
     }
     .prediction-box {
         padding: 2.5rem;
         border-radius: 1.5rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2980B9 0%, #2C3E50 100%);  /* Dégradé de bleu pour la boîte de prédiction */
         color: white;
         text-align: center;
         margin: 2rem 0;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
         animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
@@ -55,7 +55,7 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     .metric-card {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background: #ECF0F1;  /* Fond plus clair pour les cartes de métriques */
         padding: 1.5rem;
         border-radius: 1rem;
         margin: 0.5rem 0;
@@ -67,21 +67,22 @@ st.markdown("""
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
     .info-box {
-        background: #e3f2fd;
+        background: #e3f2fd;  /* Bleu clair pour la boîte d'informations */
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #2196F3;
+        border-left: 5px solid #2196F3;  /* Bleu accent pour la barre de gauche */
         margin: 1rem 0;
     }
     .warning-box {
-        background: #fff3e0;
+        background: #fff3e0;  /* Fond orangé pour la boîte d'avertissement */
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #ff9800;
+        border-left: 5px solid #FF9800;  /* Orange accent pour la barre de gauche */
         margin: 1rem 0;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 
 @st.cache_resource
