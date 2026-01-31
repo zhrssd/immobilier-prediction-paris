@@ -10,7 +10,7 @@ from pathlib import Path
 # Configuration de la page
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
-    page_icon="FS",
+    page_icon="🏠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -23,7 +23,7 @@ st.markdown("""
     }
     .stButton>button {
         width: 100%;
-        background-color: #FF4B4B;
+        background-color: #2C3E50;
         color: white;
         font-weight: bold;
         padding: 0.75rem;
@@ -33,18 +33,18 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #FF3333;
+        background-color: #1A252F;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(255, 75, 75, 0.4);
+        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.4);
     }
     .prediction-box {
         padding: 2.5rem;
         border-radius: 1.5rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
         color: white;
         text-align: center;
         margin: 2rem 0;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        box-shadow: 0 10px 30px rgba(52, 73, 94, 0.3);
         animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
@@ -52,30 +52,52 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     .metric-card {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background: white;
         padding: 1.5rem;
         border-radius: 1rem;
         margin: 0.5rem 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-        transition: transform 0.3s;
+        border: 2px solid #E8E8E8;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
     }
     .metric-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-color: #2C3E50;
+    }
+    .metric-card h3 {
+        color: #2C3E50;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .metric-card h1 {
+        color: #2C3E50;
+        font-size: 2rem;
+        margin: 0.5rem 0;
+    }
+    .metric-card p {
+        color: #7F8C8D;
+        font-size: 0.9rem;
     }
     .info-box {
-        background: #e3f2fd;
+        background: white;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #2196F3;
+        border-left: 5px solid #3498DB;
         margin: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .info-box h3 {
+        color: #2C3E50;
+        margin-top: 0;
     }
     .warning-box {
-        background: #fff3e0;
+        background: white;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #ff9800;
+        border-left: 5px solid #E67E22;
         margin: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     </style>
 """, unsafe_allow_html=True)
