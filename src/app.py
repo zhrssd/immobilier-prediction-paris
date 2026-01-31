@@ -72,6 +72,15 @@ st.markdown("""
         border-left: 5px solid #2196F3;
         margin: 1rem 0;
     }
+    
+    .stSelectbox > div > div > div {
+    background-color: #34495E !important;  /* Fond gris foncé pour la case */
+    color: white !important;  /* Texte en blanc pour contraster */
+    padding: 0.8rem;  /* Espacement autour du texte */
+    border-radius: 0.5rem;  /* Coins arrondis */
+}
+
+    
     .warning-box {
         background: #fff3e0;
         padding: 1.5rem;
@@ -82,10 +91,16 @@ st.markdown("""
     .stTextInput>div>div>input {
         background-color: #34495E; /* Modifie la couleur d'arrière-plan de l'input */
     }
+    .stAlert {
+    background-color: #2980B9 !important;  /* Fond bleu pour la case */
+    color: white !important;  /* Texte blanc pour contraster */
+    padding: 1rem;  /* Un peu d'espace autour du texte */
+    border-radius: 0.5rem;  /* Coins arrondis pour un effet plus doux */
+}
 
     .stAlert {
         background-color: #34495E 
-        color: black 
+        color: white 
     }
     </style>
 """, unsafe_allow_html=True)
