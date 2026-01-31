@@ -16,17 +16,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personnalisé amélioré
 st.markdown("""
     <style>
     .main {
         padding: 2rem;
-        background-color: #2C3E50;  /* Arrière-plan gris foncé pour une meilleure lisibilité */
-        color: white;  /* Texte en blanc pour contraster avec le fond sombre */
+        background-color: #2C3E50;
+        color: white;
     }
     .stButton>button {
         width: 100%;
-        background-color: #3498DB;  /* Bleu clair pour les boutons */
+        background-color: #3498DB;
         color: white;
         font-weight: bold;
         padding: 0.75rem;
@@ -36,14 +35,14 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #2980B9;  /* Bleu plus foncé au survol */
+        background-color: #2980B9;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
     }
     .prediction-box {
         padding: 2.5rem;
         border-radius: 1.5rem;
-        background: linear-gradient(135deg, #2980B9 0%, #2C3E50 100%);  /* Dégradé de bleu pour la boîte de prédiction */
+        background: linear-gradient(135deg, #2980B9 0%, #2C3E50 100%);
         color: white;
         text-align: center;
         margin: 2rem 0;
@@ -55,7 +54,7 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     .metric-card {
-        background: #ECF0F1;  /* Fond plus clair pour les cartes de métriques */
+        background: #ECF0F1;
         padding: 1.5rem;
         border-radius: 1rem;
         margin: 0.5rem 0;
@@ -67,23 +66,30 @@ st.markdown("""
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
     .info-box {
-        background: #e3f2fd;  /* Bleu clair pour la boîte d'informations */
+        background: #e3f2fd;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #2196F3;  /* Bleu accent pour la barre de gauche */
+        border-left: 5px solid #2196F3;
         margin: 1rem 0;
     }
     .warning-box {
-        background: #fff3e0;  /* Fond orangé pour la boîte d'avertissement */
+        background: #fff3e0;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #FF9800;  /* Orange accent pour la barre de gauche */
+        border-left: 5px solid #FF9800;
         margin: 1rem 0;
+    }
+    .stTextInput>div>div>input {
+        background-color: #34495E; /* Modifie la couleur d'arrière-plan de l'input */
+    }
+
+    /* Ajustement de la case Bienvenue */
+    .stAlert {
+        background-color: #34495E !important; /* Fond gris foncé pour la case */
+        color: white !important;  /* Texte blanc pour contraster */
     }
     </style>
 """, unsafe_allow_html=True)
-
-
 
 @st.cache_resource
 def load_model():
