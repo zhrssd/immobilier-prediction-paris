@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 from pathlib import Path
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
-    page_icon="FS",
+    page_icon="🏘️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -97,6 +97,13 @@ st.markdown("""
     padding: 1rem;  /* Un peu d'espace autour du texte */
     border-radius: 0.5rem;  /* Coins arrondis pour un effet plus doux */
 }
+.info-box {
+    background-color: #1591EA !important;  /* Fond bleu #1591EA */
+    color: white !important;  /* Texte en blanc pour contraster */
+    padding: 1rem;  /* Un peu d'espace autour du texte */
+    border-radius: 0.5rem;  /* Coins arrondis pour un effet plus doux */
+}
+
     </style>
 """, unsafe_allow_html=True)
 
@@ -109,10 +116,10 @@ def load_model():
             model_data = joblib.load(model_path)
             return model_data
         else:
-            st.error("❌ Modèle non trouvé. Veuillez d'abord entraîner le modèle avec `python src/model.py`")
+            st.error(" Modèle non trouvé. Veuillez d'abord entraîner le modèle avec `python src/model.py`")
             return None
     except Exception as e:
-        st.error(f"❌ Erreur lors du chargement du modèle: {str(e)}")
+        st.error(f"Erreur lors du chargement du modèle: {str(e)}")
         return None
 
 
@@ -175,8 +182,8 @@ def get_arrondissement_info(arrond):
 
 def main():
     # Header avec animation
-    st.title("🏠 Prédiction de Prix Immobilier à Paris")
-    st.markdown("### 🤖 Estimez le prix de votre bien grâce à l'Intelligence Artificielle")
+    st.title(" Prédiction de Prix Immobilier à Paris")
+    st.markdown("###  Estimez le prix de votre bien grâce à l'Intelligence Artificielle")
     
     # Charger le modèle
     model_data = load_model()
@@ -188,7 +195,7 @@ def main():
     feature_names = model_data['feature_names']
     
     # Sidebar avec onglets
-    st.sidebar.title("🎛️ Configuration")
+    st.sidebar.title("Configuration")
     
     tab_mode = st.sidebar.radio(
         "Mode",
@@ -209,7 +216,7 @@ def main():
     # Afficher infos arrondissement
     info_arrond = get_arrondissement_info(arrondissement)
     st.sidebar.markdown(f"""
-        <div style="background: #f0f2f6; padding: 0.8rem; border-radius: 0.5rem; font-size: 0.85rem;">
+        <div style="background: #1591EA; padding: 0.8rem; border-radius: 0.5rem; font-size: 0.85rem;">
         <b>📍 {info_arrond['quartiers']}</b><br>
         <i>{info_arrond['ambiance']}</i>
         </div>
@@ -225,7 +232,7 @@ def main():
     )
     
     st.sidebar.markdown("---")
-    st.sidebar.header("🏗️ Caractéristiques")
+    st.sidebar.header(" Caractéristiques")
     
     surface = st.sidebar.number_input(
         "Surface (m²)",
@@ -269,7 +276,7 @@ def main():
         renovation = st.checkbox("🔨 Rénové", value=False)
     
     st.sidebar.markdown("---")
-    predict_button = st.sidebar.button("🔮 PRÉDIRE LE PRIX", type="primary", use_container_width=True)
+    predict_button = st.sidebar.button("PRÉDIRE LE PRIX", type="primary", use_container_width=True)
     
     # Afficher les infos du modèle en haut
     with st.expander("ℹ️ Informations sur le modèle d'IA", expanded=False):
@@ -463,7 +470,7 @@ def main():
         
         # Conseils
         st.markdown("---")
-        st.subheader("💡 Conseils pour Optimiser Votre Prix")
+        st.subheader(" Conseils pour Optimiser Votre Prix")
         
         conseils = []
         if distance_metro > 400:
