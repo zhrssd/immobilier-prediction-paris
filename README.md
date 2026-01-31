@@ -6,18 +6,18 @@ Un projet complet d'analyse et de modélisation prédictive des prix immobiliers
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
-## 📊 Vue d'ensemble
+##  Vue d'ensemble
 
 Ce projet analyse les facteurs influençant les prix de l'immobilier à Paris et développe un modèle de prédiction basé sur plusieurs algorithmes de Machine Learning. L'objectif est de fournir des estimations précises de prix en fonction des caractéristiques d'un bien.
 
-### 🎯 Objectifs
+### Objectifs
 
 - **Analyse exploratoire** : Comprendre les tendances du marché immobilier parisien
 - **Feature Engineering** : Créer des variables pertinentes pour améliorer la prédiction
 - **Modélisation** : Comparer plusieurs algorithmes ML (Random Forest, XGBoost, Ridge)
 - **Déploiement** : Application interactive Streamlit pour prédire les prix
 
-## 🗂️ Structure du projet
+## Structure du projet
 
 ```
 immobilier-prediction-project/
@@ -43,7 +43,7 @@ immobilier-prediction-project/
 └── README.md                     # Ce fichier
 ```
 
-## 📈 Données
+##Données
 
 Le dataset contient **5000+ annonces** immobilières parisiennes avec les caractéristiques suivantes :
 
@@ -53,7 +53,7 @@ Le dataset contient **5000+ annonces** immobilières parisiennes avec les caract
 - **État** : Année de construction, rénovation récente
 - **Prix** : Prix de vente (variable cible)
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 - **Python 3.8+**
 - **Pandas & NumPy** : Manipulation de données
@@ -63,9 +63,8 @@ Le dataset contient **5000+ annonces** immobilières parisiennes avec les caract
 - **Plotly** : Visualisations interactives
 - **Streamlit** : Application web interactive
 
-## 🚀 Installation
+##  Installation
 
-### Prérequis
 
 - Python 3.8 ou supérieur
 - pip
@@ -94,7 +93,7 @@ venv\Scripts\activate  # Sur Windows
 pip install -r requirements.txt
 ```
 
-## 💻 Utilisation
+## Utilisation
 
 ### 1. Exploration des données
 
@@ -127,17 +126,6 @@ L'application s'ouvrira dans votre navigateur. Vous pourrez :
 - Obtenir une prédiction de prix instantanée
 - Visualiser les facteurs influençant le prix
 
-## 📊 Résultats
-
-### Performance du modèle
-
-| Modèle | R² Score | RMSE | MAE |
-|--------|----------|------|-----|
-| Random Forest | 0.87 | 45,230€ | 32,100€ |
-| XGBoost | **0.89** | **42,150€** | **29,800€** |
-| Ridge Regression | 0.81 | 52,400€ | 38,900€ |
-
-**Le modèle XGBoost offre les meilleures performances** avec un R² de 0.89, signifiant qu'il explique 89% de la variance des prix.
 
 ### Features les plus importantes
 
@@ -147,7 +135,6 @@ L'application s'ouvrira dans votre navigateur. Vous pourrez :
 4. **Étage** (12%)
 5. **Proximité métro** (8%)
 
-## 📸 Captures d'écran
 
 ### Analyse exploratoire
 ![Distribution des prix](visualizations/price_distribution.png)
@@ -162,7 +149,7 @@ L'application s'ouvrira dans votre navigateur. Vous pourrez :
 - Les biens avec **balcon** et **parking** ont un premium de +15-20%
 - Les **rénovations récentes** augmentent la valeur de ~12%
 
-## 🚧 Améliorations futures
+##  Améliorations futures
 
 - [ ] Intégrer des données de géolocalisation (lat/long)
 - [ ] Ajouter des features temporelles (tendances saisonnières)
@@ -176,12 +163,12 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 👤 Auteur
 
-**Votre Nom**
-- GitHub: [@votre-username](https://github.com/votre-username)
-- LinkedIn: [Votre Profil](https://linkedin.com/in/votre-profil)
-- Portfolio: [votre-portfolio.com](https://votre-portfolio.com)
+Saadna Fatima
+- GitHub: zhrssd (https://github.com/zhrssd
+- LinkedIn: (https://linkedin.com/in/fatima-saadna)
+- Portfolio: https://zhrssd.github.io/Portfolio/
 
-## 🙏 Remerciements
+Remerciements
 
 - Dataset inspiré des données publiques DVF (Demandes de Valeurs Foncières)
 - Communauté Kaggle pour les inspirations sur les features engineering
