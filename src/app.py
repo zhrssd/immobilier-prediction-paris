@@ -1,3 +1,6 @@
+"""
+Application Streamlit pour la prédiction de prix immobiliers - Version améliorée
+"""
 
 import streamlit as st
 import pandas as pd
@@ -7,6 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
 
+# Configuration de la page
 st.set_page_config(
     page_title="Prédiction Prix Immobilier Paris",
     page_icon="🏠",
@@ -19,12 +23,10 @@ st.markdown("""
     <style>
     .main {
         padding: 2rem;
-        background-color: #2E4053;  /* Arrière-plan gris foncé pour un meilleur contraste */
-        color: white;
     }
     .stButton>button {
         width: 100%;
-        background-color: #1ABC9C; /* Vert plus clair pour les boutons */
+        background-color: #FF4B4B;
         color: white;
         font-weight: bold;
         padding: 0.75rem;
@@ -34,18 +36,18 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #16A085; /* Couleur plus foncée au survol */
+        background-color: #FF3333;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.4);
+        box-shadow: 0 4px 12px rgba(255, 75, 75, 0.4);
     }
     .prediction-box {
         padding: 2.5rem;
         border-radius: 1.5rem;
-        background: linear-gradient(135deg, #2980B9 0%, #1ABC9C 100%); /* Dégradé bleu et vert */
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         text-align: center;
         margin: 2rem 0;
-        box-shadow: 0 10px 30px rgba(52, 73, 94, 0.3);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         animation: fadeIn 0.5s;
     }
     @keyframes fadeIn {
@@ -53,56 +55,32 @@ st.markdown("""
         to { opacity: 1; transform: translateY(0); }
     }
     .metric-card {
-        background: #ECF0F1; /* Fond clair pour les cartes de métriques */
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         padding: 1.5rem;
         border-radius: 1rem;
         margin: 0.5rem 0;
-        border: 2px solid #BDC3C7;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s;
     }
     .metric-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        border-color: #2980B9; /* Couleur au survol */
-    }
-    .metric-card h3 {
-        color: #34495E;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-    .metric-card h1 {
-        color: #2980B9;
-        font-size: 2rem;
-        margin: 0.5rem 0;
-    }
-    .metric-card p {
-        color: #7F8C8D;
-        font-size: 0.9rem;
     }
     .info-box {
-        background: white;
+        background: #e3f2fd;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #3498DB;
+        border-left: 5px solid #2196F3;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    .info-box h3 {
-        color: #2C3E50;
-        margin-top: 0;
     }
     .warning-box {
-        background: white;
+        background: #fff3e0;
         padding: 1.5rem;
         border-radius: 1rem;
-        border-left: 5px solid #E67E22;
+        border-left: 5px solid #ff9800;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     </style>
-""", unsafe_allow_html=True)
-
 """, unsafe_allow_html=True)
 
 
@@ -115,10 +93,10 @@ def load_model():
             model_data = joblib.load(model_path)
             return model_data
         else:
-            st.error(" Modèle non trouvé. Veuillez d'abord entraîner le modèle avec `python src/model.py`")
+            st.error("❌ Modèle non trouvé. Veuillez d'abord entraîner le modèle avec `python src/model.py`")
             return None
     except Exception as e:
-        st.error(f" Erreur lors du chargement du modèle: {str(e)}")
+        st.error(f"❌ Erreur lors du chargement du modèle: {str(e)}")
         return None
 
 
@@ -153,7 +131,7 @@ def create_features_from_input(input_data):
 
 
 def get_arrondissement_info(arrond):
-  
+    """Retourne des infos sur l'arrondissement"""
     infos = {
         1: {"nom": "Louvre", "quartiers": "Châtelet, Palais-Royal", "ambiance": "Historique & Touristique"},
         2: {"nom": "Bourse", "quartiers": "Opéra, Sentier", "ambiance": "Affaires & Shopping"},
@@ -203,7 +181,7 @@ def main():
     )
     
     st.sidebar.markdown("---")
-    st.sidebar.header(" Localisation")
+    st.sidebar.header("📍 Localisation")
     
     arrondissement = st.sidebar.selectbox(
         "Arrondissement",
@@ -216,7 +194,7 @@ def main():
     info_arrond = get_arrondissement_info(arrondissement)
     st.sidebar.markdown(f"""
         <div style="background: #f0f2f6; padding: 0.8rem; border-radius: 0.5rem; font-size: 0.85rem;">
-        <b> {info_arrond['quartiers']}</b><br>
+        <b>📍 {info_arrond['quartiers']}</b><br>
         <i>{info_arrond['ambiance']}</i>
         </div>
     """, unsafe_allow_html=True)
@@ -231,7 +209,7 @@ def main():
     )
     
     st.sidebar.markdown("---")
-    st.sidebar.header("Caractéristiques")
+    st.sidebar.header("🏗️ Caractéristiques")
     
     surface = st.sidebar.number_input(
         "Surface (m²)",
@@ -243,18 +221,18 @@ def main():
     
     col1, col2 = st.sidebar.columns(2)
     with col1:
-        nb_pieces = st.number_input("Pièces", 1, 6, 3)
+        nb_pieces = st.number_input("🚪 Pièces", 1, 6, 3)
     with col2:
-        nb_chambres = st.number_input("Chambres", 0, 5, max(0, nb_pieces - 1))
+        nb_chambres = st.number_input("🛏️ Chambres", 0, 5, max(0, nb_pieces - 1))
     
     col1, col2 = st.sidebar.columns(2)
     with col1:
-        etage = st.number_input(" Étage", 0, 10, 2)
+        etage = st.number_input("⬆️ Étage", 0, 10, 2)
     with col2:
         nb_etages_immeuble = st.number_input("🏢 Total étages", max(1, etage + 1), 15, max(6, etage + 2))
     
     annee_construction = st.sidebar.slider(
-        " Année de construction",
+        "📅 Année de construction",
         min_value=1850,
         max_value=2024,
         value=1970
@@ -270,12 +248,12 @@ def main():
         cave = st.checkbox("📦 Cave", value=True)
     
     with col2:
-        terrasse = st.checkbox(" Terrasse", value=False)
-        ascenseur = st.checkbox(" Ascenseur", value=True)
-        renovation = st.checkbox(" Rénové", value=False)
+        terrasse = st.checkbox("🌿 Terrasse", value=False)
+        ascenseur = st.checkbox("🛗 Ascenseur", value=True)
+        renovation = st.checkbox("🔨 Rénové", value=False)
     
     st.sidebar.markdown("---")
-    predict_button = st.sidebar.button(" PRÉDIRE LE PRIX", type="primary", use_container_width=True)
+    predict_button = st.sidebar.button("🔮 PRÉDIRE LE PRIX", type="primary", use_container_width=True)
     
     # Afficher les infos du modèle en haut
     with st.expander("ℹ️ Informations sur le modèle d'IA", expanded=False):
@@ -324,7 +302,7 @@ def main():
         # Afficher la prédiction avec animation
         st.markdown(f"""
             <div class="prediction-box">
-                <h1> Prix Estimé</h1>
+                <h1>💰 Prix Estimé</h1>
                 <h1 style="font-size: 3.5rem; margin: 1rem 0; font-weight: bold;">{prediction:,.0f} €</h1>
                 <p style="font-size: 1.4rem; opacity: 0.9;">{prix_m2:,.0f} € / m²</p>
             </div>
@@ -345,7 +323,7 @@ def main():
         with col2:
             st.markdown(f"""
                 <div class="metric-card">
-                    <h3 style="margin: 0;"> Localisation</h3>
+                    <h3 style="margin: 0;">📍 Localisation</h3>
                     <h1 style="margin: 0.5rem 0; color: #764ba2;">{arrondissement}ème</h1>
                     <p style="margin: 0; color: #666;">{distance_metro}m du métro</p>
                 </div>
@@ -355,7 +333,7 @@ def main():
             equipements = sum([balcon, terrasse, parking, cave, ascenseur, renovation])
             st.markdown(f"""
                 <div class="metric-card">
-                    <h3 style="margin: 0;"> Confort</h3>
+                    <h3 style="margin: 0;">✨ Confort</h3>
                     <h1 style="margin: 0.5rem 0; color: #FF4B4B;">{equipements}/6</h1>
                     <p style="margin: 0; color: #666;">équipements</p>
                 </div>
@@ -432,7 +410,7 @@ def main():
         col1, col2 = st.columns([2, 1])
         
         with col1:
-            st.subheader(" Fourchette de Prix")
+            st.subheader("📈 Fourchette de Prix")
             
             fig = go.Figure()
             
@@ -475,17 +453,17 @@ def main():
         if distance_metro > 400:
             conseils.append("🚇 **Proximité métro** : Un bien à moins de 200m du métro vaut environ 8% de plus")
         if not parking and arrondissement in [1, 6, 7, 8, 16]:
-            conseils.append(" **Parking** : Dans les arrondissements chers, un parking peut ajouter 10-15% à la valeur")
+            conseils.append("🚗 **Parking** : Dans les arrondissements chers, un parking peut ajouter 10-15% à la valeur")
         if not renovation and annee_construction < 1970:
             conseils.append("🔨 **Rénovation** : Une rénovation récente augmente la valeur d'environ 12%")
         if not balcon and not terrasse:
-            conseils.append(" **Extérieur** : Un balcon ou une terrasse est très apprécié (+5-8%)")
+            conseils.append("🪴 **Extérieur** : Un balcon ou une terrasse est très apprécié (+5-8%)")
         
         if conseils:
             for conseil in conseils:
                 st.markdown(f"- {conseil}")
         else:
-            st.success("Votre bien dispose déjà de nombreux atouts valorisants !")
+            st.success("✅ Votre bien dispose déjà de nombreux atouts valorisants !")
         
     else:
         # Page d'accueil améliorée
@@ -498,24 +476,24 @@ def main():
         """, unsafe_allow_html=True)
         
         # Statistiques du modèle
-        st.subheader(" Performance du Modèle")
+        st.subheader("🎯 Performance du Modèle")
         
         col1, col2, col3, col4 = st.columns(4)
-        col1.metric(" Algorithme", model_data['model_name'][:15] + "...")
-        col2.metric(" Précision", f"{model_data['r2_score']:.1%}")
-        col3.metric(" Erreur moy.", f"{model_data['mae']/1000:.0f}k €")
-        col4.metric(" RMSE", f"{model_data['rmse']/1000:.0f}k €")
+        col1.metric("🤖 Algorithme", model_data['model_name'][:15] + "...")
+        col2.metric("🎯 Précision", f"{model_data['r2_score']:.1%}")
+        col3.metric("📊 Erreur moy.", f"{model_data['mae']/1000:.0f}k €")
+        col4.metric("📈 RMSE", f"{model_data['rmse']/1000:.0f}k €")
         
         st.markdown("---")
         
         # Features importantes
-        st.subheader(" Facteurs Clés Influençant le Prix")
+        st.subheader("🔑 Facteurs Clés Influençant le Prix")
         
         col1, col2 = st.columns(2)
         
         with col1:
             st.markdown("""
-            ####  Facteurs Principaux
+            #### 📊 Facteurs Principaux
             - **Surface** (32%) : Le facteur le plus important
             - **Arrondissement** (24%) : La localisation est cruciale
             - **Nombre de pièces** (18%) : Impact significatif
@@ -524,7 +502,7 @@ def main():
         
         with col2:
             st.markdown("""
-            ####  Bonus de Valorisation
+            #### 🎁 Bonus de Valorisation
             - **Proximité métro < 200m** : +8%
             - **Parking** : +10-15%
             - **Terrasse** : +8-12%
